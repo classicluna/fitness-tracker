@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import WorkoutForm from './components/WorkoutForm';
+import WorkoutList from './components/WorkoutList';
 import './App.css';
 
 function App() {
+  const [workouts, setWorkouts] = useState([]);
+
+  const addWorkout = (workout) => {
+    setWorkouts([...workouts, workout]);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Fitness Tracker</h1>
+      <WorkoutForm addWorkout={addWorkout} />
+      <WorkoutList workouts={workouts} />
     </div>
   );
 }
